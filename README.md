@@ -27,12 +27,37 @@ A Python script for easily installing the Cursor Editor AppImage on Linux system
 - Creates all necessary directories
 - Integrates with system application menu
 - Clean uninstallation script included
+- Graphical user interface for easy installation
 
 ## Requirements
 
 - Python 3.6 or higher
 - Linux operating system
 - Cursor AppImage file (download from [cursor.com](https://www.cursor.com/))
+- tkinter (Python GUI library)
+
+### Installing Requirements
+
+On Ubuntu/Debian:
+```bash
+sudo apt-get update
+sudo apt-get install python3-tk
+```
+
+On Fedora:
+```bash
+sudo dnf install python3-tkinter
+```
+
+On Arch Linux:
+```bash
+sudo pacman -S tk
+```
+
+On openSUSE:
+```bash
+sudo zypper install python3-tk
+```
 
 ## Installation
 
@@ -45,11 +70,32 @@ git clone https://github.com/yourusername/cursorInstaller.git
 cd cursorInstaller
 ```
 
-3. Make the installer script executable:
+3. Make the installer scripts executable:
 ```bash
 chmod +x install.py
 chmod +x uninstall.py
+chmod +x cursor-installer-gui.py
 ```
+
+4. Install the desktop launcher (optional):
+```bash
+cp cursor-installer-gui.desktop ~/.local/share/applications/
+```
+
+### Using the GUI Installer
+
+You can launch the GUI installer in two ways:
+1. Double-click the Cursor Installer icon in your applications menu
+2. Run from terminal:
+```bash
+./cursor-installer-gui.py
+```
+
+The GUI installer provides:
+- Easy file selection through a file dialog
+- Visual feedback during installation
+- Direct link to download Cursor AppImage
+- Error messages in case of installation problems
 
 ### Making Scripts Globally Available
 

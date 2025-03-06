@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cursor Installer
+Comment=Install Cursor Editor AppImage with GUI
+Exec=cursor-installer-gui
+Icon=text-editor
+Terminal=false
+Categories=Utility;TextEditor;
+Keywords=cursor;editor;install;appimage; 
