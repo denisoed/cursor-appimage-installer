@@ -2,6 +2,22 @@
 
 A Python script for easily installing the Cursor Editor AppImage on Linux systems. This installer automates the process of making the AppImage executable, placing it in the correct directory, and creating a desktop entry.
 
+## Table of Contents
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+  - [Basic Installation](#basic-installation)
+  - [Making Scripts Globally Available](#making-scripts-globally-available)
+- [Usage](#usage)
+  - [Basic Installation](#basic-installation-1)
+  - [Uninstallation](#uninstallation)
+  - [Command Line Arguments](#command-line-arguments)
+- [What the Installer Does](#what-the-installer-does)
+- [Desktop Integration](#desktop-integration)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - Automatically installs Cursor AppImage to `~/.local/bin`
@@ -20,6 +36,8 @@ A Python script for easily installing the Cursor Editor AppImage on Linux system
 
 ## Installation
 
+### Basic Installation
+
 1. Clone this repository or download the installer script:
 ```bash
 git clone https://github.com/yourusername/cursorInstaller.git
@@ -32,6 +50,23 @@ chmod +x install.py
 chmod +x uninstall.py
 ```
 
+### Making Scripts Globally Available
+
+To make the installer and uninstaller scripts available globally from anywhere in your terminal:
+
+1. Create a symbolic link to the scripts in `~/.local/bin`:
+
+```bash
+ln -s "$(pwd)/install.py" ~/.local/bin/cursor-install
+ln -s "$(pwd)/uninstall.py" ~/.local/bin/cursor-uninstall
+```
+
+After this, you can use the commands from anywhere:
+```bash
+cursor-install ./Cursor-x.x.x.AppImage
+cursor-uninstall
+```
+
 ## Usage
 
 ### Basic Installation
@@ -39,7 +74,7 @@ chmod +x uninstall.py
 Download the latest Cursor AppImage from the official website and place it in the cursorInstaller directory:
 
 ```bash
-./install.py ./Cursor-x.x.x.AppImage --icon custom.png
+cursor-install ./Cursor-x.x.x.AppImage --icon custom.png
 ```
 
 ### Uninstallation
@@ -47,7 +82,7 @@ Download the latest Cursor AppImage from the official website and place it in th
 To completely remove Cursor from your system:
 
 ```bash
-./uninstall.py
+cursor-uninstall
 ```
 
 This will remove:
@@ -58,50 +93,35 @@ This will remove:
 
 ### Command Line Arguments
 
-For install.py:
-- `appimage`: Path to the Cursor AppImage file (required)
-- `--icon`: Path to a custom icon file (optional)
+- `--icon`: Specify a custom icon for the desktop entry
 
 ## What the Installer Does
 
-1. Creates necessary directories:
-   - `~/.local/bin` for the AppImage
-   - `~/.local/share/applications` for the desktop entry
-
-2. Makes the AppImage executable
-
-3. Copies the AppImage to `~/.local/bin`
-
-4. Creates a desktop entry with:
-   - Application name and description
-   - Executable path
-   - Icon
-   - File associations
-   - Application categories
-   - Search keywords
+- Makes the AppImage executable
+- Places the AppImage in the correct directory
+- Creates a desktop entry for easy access
+- Supports custom icon path
+- Creates all necessary directories
+- Integrates with system application menu
 
 ## Desktop Integration
 
-After installation, Cursor Editor will be available in your system's application menu under the "Development" category. You can:
-
-- Launch it from the application menu
-- Search for "Cursor" in your system's application launcher
-- Open files directly with Cursor Editor
-- Pin it to your dock or favorites
+- The installer creates a desktop entry in `~/.local/share/applications`
+- The desktop entry is integrated with the system application menu
 
 ## Troubleshooting
 
-If you encounter any issues:
-
-1. Ensure the AppImage file exists and is accessible
-2. Check if you have write permissions in `~/.local/bin` and `~/.local/share/applications`
-3. Verify that Python 3.6 or higher is installed
-4. Make sure the installer script is executable
+- If the installer fails, check the terminal output for any error messages
+- If the desktop entry is not created, check the system's application menu
 
 ## Contributing
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+- Fork the repository
+- Create a new branch
+- Make your changes
+- Commit and push your changes
+- Open a pull request
 
 ## License
 
-This project is open source and available under the MIT License. 
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
