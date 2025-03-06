@@ -113,6 +113,20 @@ This will remove:
 
 - If the installer fails, check the terminal output for any error messages
 - If the desktop entry is not created, check the system's application menu
+- If you get "command not found: cursor-install" after making scripts globally available:
+  1. Make sure `~/.local/bin` is in your PATH:
+     ```bash
+     echo $PATH | grep ~/.local/bin
+     ```
+  2. If not, add it to your shell's configuration file (`~/.bashrc`, `~/.zshrc`, etc.):
+     ```bash
+     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+     source ~/.bashrc
+     ```
+  3. Verify the symbolic links are created correctly:
+     ```bash
+     ls -l ~/.local/bin/cursor-*
+     ```
 
 ## Contributing
 
