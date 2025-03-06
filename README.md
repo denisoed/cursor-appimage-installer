@@ -97,9 +97,23 @@ This will remove:
 - Configuration directory from `~/.config/Cursor`
 - Cache directory from `~/.cache/Cursor`
 
+To remove Cursor without cleaning the cache (useful for preserving settings between installations):
+
+```bash
+cursor-uninstall --save-cache
+```
+
+To remove Cursor while preserving both cache and configuration files:
+
+```bash
+cursor-uninstall --save-cache --save-config
+```
+
 ### Command Line Arguments
 
 - `--icon`: Specify a custom icon for the desktop entry
+- `--save-cache`: Preserve the cache directory during uninstallation
+- `--save-config`: Preserve the configuration directory during uninstallation
 
 ## What the Installer Does
 

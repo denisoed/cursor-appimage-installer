@@ -3,17 +3,20 @@
 import os
 import sys
 import shutil
+import argparse
 from pathlib import Path
 
 class CursorUninstaller:
     """Class responsible for uninstalling Cursor and removing all associated files"""
     
-    def __init__(self):
+    def __init__(self, save_cache=False, save_config=False):
         self.home_dir = Path.home()
         self.bin_dir = self.home_dir / '.local' / 'bin'
         self.desktop_dir = self.home_dir / '.local' / 'share' / 'applications'
         self.config_dir = self.home_dir / '.config' / 'Cursor'
         self.cache_dir = self.home_dir / '.cache' / 'Cursor'
+        self.save_cache = save_cache
+        self.save_config = save_config
         
     def remove_appimage(self) -> None:
         """Remove Cursor AppImage from ~/.local/bin"""
@@ -42,6 +45,10 @@ class CursorUninstaller:
 
     def remove_config(self) -> None:
         """Remove Cursor configuration directory"""
+        if self.save_config:
+            print("ℹ Preserving configuration directory (--save-config flag used)")
+            return
+            
         try:
             if self.config_dir.exists():
                 shutil.rmtree(self.config_dir)
@@ -53,6 +60,10 @@ class CursorUninstaller:
 
     def remove_cache(self) -> None:
         """Remove Cursor cache directory"""
+        if self.save_cache:
+            print("ℹ Preserving cache directory (--save-cache flag used)")
+            return
+            
         try:
             if self.cache_dir.exists():
                 shutil.rmtree(self.cache_dir)
@@ -75,8 +86,13 @@ class CursorUninstaller:
         print("Cursor has been removed from your system.")
 
 def main():
+    parser = argparse.ArgumentParser(description='Uninstall Cursor Editor')
+    parser.add_argument('--save-cache', action='store_true', help='Preserve the cache directory during uninstallation')
+    parser.add_argument('--save-config', action='store_true', help='Preserve the configuration directory during uninstallation')
+    args = parser.parse_args()
+
     try:
-        uninstaller = CursorUninstaller()
+        uninstaller = CursorUninstaller(save_cache=args.save_cache, save_config=args.save_config)
         uninstaller.uninstall()
     except Exception as e:
         print(f"\n⚠ Error during uninstallation: {e}")
