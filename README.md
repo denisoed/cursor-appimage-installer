@@ -32,19 +32,20 @@ A Python script for easily installing the Cursor Editor AppImage on Linux system
 
 - Python 3.6 or higher
 - Linux operating system
-- Cursor AppImage file
+- Cursor AppImage file (download from [cursor.com](https://www.cursor.com/))
 
 ## Installation
 
 ### Basic Installation
 
-1. Clone this repository or download the installer script:
+1. Download the latest Cursor AppImage from [cursor.com](https://www.cursor.com/)
+2. Clone this repository or download the installer script:
 ```bash
 git clone https://github.com/yourusername/cursorInstaller.git
 cd cursorInstaller
 ```
 
-2. Make the installer script executable:
+3. Make the installer script executable:
 ```bash
 chmod +x install.py
 chmod +x uninstall.py
