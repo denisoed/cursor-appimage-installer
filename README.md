@@ -54,7 +54,13 @@ chmod +x uninstall.py
 
 To make the installer and uninstaller scripts available globally from anywhere in your terminal:
 
-1. Create a symbolic link to the scripts in `~/.local/bin`:
+1. First, remove any existing symbolic links (if they exist):
+```bash
+rm -f ~/.local/bin/cursor-install
+rm -f ~/.local/bin/cursor-uninstall
+```
+
+2. Create a symbolic link to the scripts in `~/.local/bin`:
 
 ```bash
 ln -s "$(pwd)/install.py" ~/.local/bin/cursor-install
