@@ -51,7 +51,7 @@ class CursorInstaller:
                 f.write(f"""[Desktop Entry]
 Name=Cursor Editor
 Comment=The IDE that helps you code faster
-Exec={installed_path} %F
+Exec={installed_path} --no-sandbox
 Icon={self.icon_path if self.icon_path else 'cursor-editor'}
 Type=Application
 Categories=Development;IDE;

@@ -71,7 +71,13 @@ cursor-uninstall
 
 ### Basic Installation
 
-Download the latest Cursor AppImage from the official website and place it in the cursorInstaller directory:
+Before installing a new version, it's recommended to uninstall the old one:
+
+```bash
+cursor-uninstall
+```
+
+Then download the latest Cursor AppImage from the official website and place it in the cursorInstaller directory:
 
 ```bash
 cursor-install ./Cursor-x.x.x.AppImage --icon custom.png
