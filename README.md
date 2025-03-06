@@ -10,6 +10,7 @@ A Python script for easily installing the Cursor Editor AppImage on Linux system
 - Supports custom icon path
 - Creates all necessary directories
 - Integrates with system application menu
+- Clean uninstallation script included
 
 ## Requirements
 
@@ -28,6 +29,7 @@ cd cursorInstaller
 2. Make the installer script executable:
 ```bash
 chmod +x install.py
+chmod +x uninstall.py
 ```
 
 ## Usage
@@ -40,8 +42,23 @@ Download the latest Cursor AppImage from the official website and place it in th
 ./install.py ./Cursor-x.x.x.AppImage --icon custom.png
 ```
 
+### Uninstallation
+
+To completely remove Cursor from your system:
+
+```bash
+./uninstall.py
+```
+
+This will remove:
+- Cursor AppImage from `~/.local/bin`
+- Desktop entry from `~/.local/share/applications`
+- Configuration directory from `~/.config/Cursor`
+- Cache directory from `~/.cache/Cursor`
+
 ### Command Line Arguments
 
+For install.py:
 - `appimage`: Path to the Cursor AppImage file (required)
 - `--icon`: Path to a custom icon file (optional)
 
